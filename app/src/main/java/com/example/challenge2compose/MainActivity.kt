@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column( modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.fillMaxSize()) {
                 Challenge2ComposeTheme {
                     Texting()
                     Banner()
@@ -61,25 +61,24 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
 //@Preview(showBackground = true)
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun Texting() {
     val gradientColor = listOf(LightMagenta, Color.Blue, Color.Magenta)
 
-    Column (
+    Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier.padding(10.dp)
     ) {
-        Row (
+        Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)
-                ) {
+        ) {
             Text(
                 text = "Hello Binarian,",
                 style = TextStyle(
@@ -128,40 +127,41 @@ fun Banner() {
             .padding(16.dp),
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp)
+            defaultElevation = 6.dp
+        )
 
     ) {
-            Row(
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.burger),
+                contentDescription = null,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    .size(120.dp)
+                    .clip(shape = RoundedCornerShape(8.dp))
+            )
+
+            Column(
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.padding(10.dp)
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.burger),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(120.dp)
-                        .clip(shape = RoundedCornerShape(8.dp))
+                Text(
+                    text = "Discount 30%",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp
                 )
+                Spacer(modifier = Modifier.height(8.dp))
 
-                Column(
-                    horizontalAlignment = Alignment.Start,
-                    modifier = Modifier.padding(10.dp)
-                ) {
-                    Text(
-                        text = "Discount 30%",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text (
-                        text = "Order now and get your dream food!"
-                    )
-                }
-
+                Text(
+                    text = "Order now and get your dream food!"
+                )
             }
+
+        }
     }
 }
 
@@ -215,9 +215,10 @@ fun FoodItemCard(foodItem: FoodVertical) {
             .padding(8.dp)
             .size(140.dp)
             .clip(shape = RoundedCornerShape(8.dp))
-            .background(color = LightMagenta),
+            .background(color = Color.Magenta),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp)
+            defaultElevation = 4.dp
+        )
     ) {
         Column(
             modifier = Modifier
@@ -260,7 +261,7 @@ fun RecommendedFoodSection() {
         FoodVertical("Soto", "3.88", R.drawable.soto),
         FoodVertical("Salad", "2.88", R.drawable.bakso),
 
-    )
+        )
 
     Column(
         modifier = Modifier
